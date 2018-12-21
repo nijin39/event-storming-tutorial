@@ -1,9 +1,9 @@
-package com.coupang.elba.creditcard.application;
+package com.tandem.creditcard.application;
 
-import com.coupang.elba.creditcard.model.CreditCard;
-import com.coupang.elba.creditcard.model.Withdrawal;
-import com.coupang.elba.creditcard.persistance.CreditCardRepository;
-import com.coupang.elba.creditcard.persistance.WithdrawalRepository;
+import com.tandem.creditcard.model.CreditCard;
+import com.tandem.creditcard.model.Withdrawal;
+import com.tandem.creditcard.persistance.CreditCardRepository;
+import com.tandem.creditcard.persistance.WithdrawalRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

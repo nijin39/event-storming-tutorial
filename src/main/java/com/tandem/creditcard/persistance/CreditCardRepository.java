@@ -1,7 +1,7 @@
-package com.coupang.elba.creditcard.persistance;
+package com.tandem.creditcard.persistance;
 
-import com.coupang.elba.creditcard.model.CreditCard;
-import com.coupang.elba.creditcard.model.DomainEvent;
+import com.tandem.creditcard.model.CreditCard;
+import com.tandem.creditcard.model.DomainEvent;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.cloud.stream.messaging.Source;

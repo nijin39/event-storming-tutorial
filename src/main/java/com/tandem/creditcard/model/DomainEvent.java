@@ -1,4 +1,4 @@
-package com.coupang.elba.creditcard.model;
+package com.tandem.creditcard.model;
 
 public interface DomainEvent {
 

@@ -1,9 +1,11 @@
-package com.coupang.elba.creditcard.model;
+package com.tandem.creditcard.model;
 
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import io.vavr.Predicates;
 import lombok.Getter;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -15,20 +17,18 @@ import static io.vavr.API.Case;
 import static io.vavr.collection.List.ofAll;
 
 @Getter
-@Entity
 public class CreditCard {
-
     private final UUID uuid;
     private List<DomainEvent> pendingEvents = new ArrayList<>();
     private BigDecimal limit;
     private BigDecimal usedLimit = BigDecimal.ZERO;
     private int withdrawals;
 
-    private CreditCard(UUID uuid){
+    public CreditCard(UUID uuid){
         this.uuid = uuid;
     }
 
-    void assignLimit(BigDecimal money) {        //cmd
+    public void assignLimit(BigDecimal money) {        //cmd
         if(limitAlreadyAssigned()) {            //invariant
             throw new IllegalStateException();  //nack
         }

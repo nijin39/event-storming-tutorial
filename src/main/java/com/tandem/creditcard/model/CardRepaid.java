@@ -1,4 +1,4 @@
-package com.coupang.elba.creditcard.model;
+package com.tandem.creditcard.model;
 
 import lombok.Getter;
 
@@ -7,20 +7,19 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Getter
-public class CardWithdrawn implements DomainEvent {
-
-    private final UUID cardNo;
+public class CardRepaid implements DomainEvent {
+    private final UUID uuid;
     private final BigDecimal money;
     private final Instant timestamp;
 
-    public CardWithdrawn(UUID cardNo, BigDecimal money, Instant timestamp) {
-        this.cardNo = cardNo;
+    public CardRepaid(UUID uuid, BigDecimal money, Instant timestamp) {
+        this.uuid = uuid;
         this.money = money;
         this.timestamp = timestamp;
     }
 
     @Override
     public String getType() {
-        return "card-withdrawn";
+        return "card-repaid";
     }
 }

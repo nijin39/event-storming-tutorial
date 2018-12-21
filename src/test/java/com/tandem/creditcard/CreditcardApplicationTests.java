@@ -1,4 +1,4 @@
-package com.coupang.elba.creditcard;
+package com.tandem.creditcard;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

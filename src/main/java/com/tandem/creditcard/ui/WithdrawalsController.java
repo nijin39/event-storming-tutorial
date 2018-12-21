@@ -1,11 +1,12 @@
-package com.coupang.elba.creditcard.ui;
+package com.tandem.creditcard.ui;
 
-import com.coupang.elba.creditcard.application.WithdrawalsProcess;
-import com.coupang.elba.creditcard.model.Withdrawal;
-import com.coupang.elba.creditcard.persistance.WithdrawalRepository;
+import com.tandem.creditcard.application.WithdrawalsProcess;
+import com.tandem.creditcard.model.Withdrawal;
+import com.tandem.creditcard.persistance.WithdrawalRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
@@ -21,9 +22,9 @@ public class WithdrawalsController {
         this.withdrawalsProcess = withdrawalsProcess;
     }
 
-    @PostMapping("/withdrawals")
-    ResponseEntity withdraw(@RequestBody WithdrawalRequest withdrawalRequest) {
-        withdrawalsProcess.withdrawl(withdrawalRequest.getCardId(), withdrawalRequest.getAmount());
+    @PostMapping("/{cardNo}")
+    ResponseEntity withdraw(@PathVariable String cardNo, @RequestBody WithdrawalRequest r){
+        withdrawalsProcess.withdrawl(UUID.fromString(cardNo) ,r.getMoney());
         return ResponseEntity.ok().build();
     }
 
@@ -33,24 +34,16 @@ public class WithdrawalsController {
     }
 }
 
-class WithdrawalRequest {
-    private UUID cardId;
-    private BigDecimal amount;
+class WithdrawalRequest implements Serializable {
+    private BigDecimal money;
 
-    WithdrawalRequest() {
-
+    public WithdrawalRequest(){};
+    public WithdrawalRequest(BigDecimal money) {
+        this.money = money;
     }
 
-    WithdrawalRequest(UUID cardId, BigDecimal amount) {
-        this.cardId = cardId;
-        this.amount = amount;
-    }
 
-    public UUID getCardId() {
-        return cardId;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
+    public BigDecimal getMoney() {
+        return money;
     }
 }
