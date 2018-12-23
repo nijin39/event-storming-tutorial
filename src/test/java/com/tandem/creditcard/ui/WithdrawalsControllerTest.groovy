@@ -1,5 +1,7 @@
 package com.tandem.creditcard.ui
 
+import groovy.util.logging.Log4j
+import groovy.util.logging.Slf4j
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -7,11 +9,13 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.ResponseEntity
 import org.springframework.test.context.junit4.SpringRunner
-import org.junit.Assert;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Slf4j
 class WithdrawalsControllerTest {
 
     private static final String ANY_CARD_NO = "no";
@@ -30,9 +34,9 @@ class WithdrawalsControllerTest {
         ResponseEntity res = testRestTemplate.getForEntity(
                 "/withdrawals/" + ANY_CARD_NO,
                 WithdrawalRequest.class);
-        assertThat()
-        //assertThat(res.getStatusCode().is2xxSuccessful()).isTrue();
-        //sassertThat(res.getBody()).hasSize(1);
+        log.info(res.toString());
+        assertThat(res.getStatusCode().is2xxSuccessful(), is(true));
+        assertThat(res.getBody(), hasSize(1))
     }
 }
 

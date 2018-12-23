@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
-@RestController
+@RestController("/withdrawals")
 public class WithdrawalsController {
 
     private final WithdrawalRepository withdrawalRepository;
@@ -23,12 +23,12 @@ public class WithdrawalsController {
     }
 
     @PostMapping("/{cardNo}")
-    ResponseEntity withdraw(@PathVariable String cardNo, @RequestBody WithdrawalRequest r){
-        withdrawalsProcess.withdrawl(UUID.fromString(cardNo) ,r.getMoney());
+    ResponseEntity withdraw(@PathVariable String cardId, @RequestBody WithdrawalRequest r){
+        withdrawalsProcess.withdrawl(UUID.fromString(cardId) ,r.getMoney());
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/withdrawals/{cardId}")
+    @GetMapping("/{cardId}")
     ResponseEntity<List<Withdrawal>> withdrawals(@PathVariable UUID cardId) {
         return ResponseEntity.ok().body(withdrawalRepository.findByCardId(cardId));
     }
