@@ -32,7 +32,7 @@ class RepaymentController {
 
     @PostMapping("/{cardNr}")
     ResponseEntity<RepaymentRequest> repay(@PathVariable UUID cardNr, @RequestBody RepaymentRequest r) {
-        source.output().send(MessageBuilder.withPayload( new MoneyRepaid(cardNr, r.getAmount(), Instant.now()) ).build());
+        //source.output().send(MessageBuilder.withPayload( new MoneyRepaid(cardNr, r.getAmount(), Instant.now()) ).build());
         withdrawalsProcess.repay(cardNr,  r.getAmount() );
         return ResponseEntity.ok().body(r);
     }

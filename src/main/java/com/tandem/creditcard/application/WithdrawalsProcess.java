@@ -33,5 +33,6 @@ public class WithdrawalsProcess {
     public void repay(UUID cardId, BigDecimal money){
         CreditCard creditCard = creditCardRepository.load(cardId);
         creditCard.repay(money);
+        creditCardRepository.save(creditCard);
     }
 }
