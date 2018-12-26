@@ -2,43 +2,56 @@ package com.tandem.creditcard.ui;
 
 import com.tandem.creditcard.application.WithdrawalsProcess;
 import com.tandem.creditcard.model.MoneyRepaid;
+import com.tandem.creditcard.persistance.CreditCardRepository;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.Message;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.messaging.support.GenericMessage;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
-@RestController("/repayments")
+@Slf4j
+@RestController
+@RequestMapping("/repayments")
 class RepaymentController {
 
     private final Source source;
     private final WithdrawalsProcess withdrawalsProcess;
 
-    RepaymentController(Source source, WithdrawalsProcess withdrawalsProcess) {
+    public RepaymentController(Source source, WithdrawalsProcess withdrawalsProcess) {
         this.source = source;
         this.withdrawalsProcess = withdrawalsProcess;
     }
 
     @PostMapping("/{cardNr}")
-    ResponseEntity repay(@PathVariable String cardNr, @RequestBody RepaymentRequest r) {
-        withdrawalsProcess.repay(UUID.fromString(cardNr),  r.amount );
-        source.output().send( (Message<MoneyRepaid>) new MoneyRepaid(UUID.fromString(cardNr), r.amount, Instant.now()));
+    ResponseEntity<RepaymentRequest> repay(@PathVariable UUID cardNr, @RequestBody RepaymentRequest r) {
+        source.output().send(MessageBuilder.withPayload( new MoneyRepaid(cardNr, r.getAmount(), Instant.now()) ).build());
+        //withdrawalsProcess.repay(cardNr,  r.getAmount() );
         return ResponseEntity.ok().body(r);
     }
 
 }
 
-class RepaymentRequest {
+@Data
+class RepaymentRequest implements Serializable {
 
-    final BigDecimal amount;
+    private static final long serialversionUID = 129348939L;
 
-    RepaymentRequest(BigDecimal amount) {
-        this.amount = amount;
+    private BigDecimal money;
+
+    public RepaymentRequest(){}
+    public RepaymentRequest(BigDecimal money) {
+        this.money = money;
+    }
+
+    public BigDecimal getAmount() {
+        return money;
     }
 }

@@ -45,7 +45,7 @@ class WithdrawalRequest implements Serializable {
     private static final long serialversionUID = 129348938L;
     private BigDecimal money;
 
-    public WithdrawalRequest(){};
+    public WithdrawalRequest(){}
     public WithdrawalRequest(BigDecimal money) {
         this.money = money;
     }

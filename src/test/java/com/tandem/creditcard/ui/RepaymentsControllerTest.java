@@ -2,12 +2,9 @@ package com.tandem.creditcard.ui;
 
 import com.tandem.creditcard.CreditcardApplication;
 import com.tandem.creditcard.model.CreditCard;
-import com.tandem.creditcard.model.DomainEvent;
 import com.tandem.creditcard.model.MoneyRepaid;
-import com.tandem.creditcard.model.Withdrawal;
 import com.tandem.creditcard.persistance.CreditCardRepository;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +14,9 @@ import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.cloud.stream.test.binder.MessageCollector;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.Message;
-import org.springframework.messaging.support.GenericMessage;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -33,7 +28,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CreditcardApplication.class,
         webEnvironment = RANDOM_PORT)
-public class RepaymentsTest {
+public class RepaymentsControllerTest {
 
     private static final UUID ANY_CARD_NR = UUID.randomUUID();
 

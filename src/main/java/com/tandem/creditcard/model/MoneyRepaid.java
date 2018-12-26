@@ -1,11 +1,13 @@
 package com.tandem.creditcard.model;
 
+import lombok.Data;
 import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
+@Data
 @Getter
 public class MoneyRepaid implements DomainEvent {
     private final UUID uuid;

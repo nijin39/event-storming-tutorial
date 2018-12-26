@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@SpringBootApplication
+@SpringBootApplication()
 @EnableBinding(Source.class)
 //@EnableScheduling
 public class CreditcardApplication {
