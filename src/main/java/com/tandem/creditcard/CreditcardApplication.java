@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @SpringBootApplication()
 @EnableBinding(Source.class)
-//@EnableScheduling
+@EnableScheduling
 public class CreditcardApplication {
 
 	private final CreditCardRepository creditCardRepository;
