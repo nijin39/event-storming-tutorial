@@ -26,4 +26,11 @@ public class WithdrawalsProcess {
         creditCard.withdraw(money);
         withdrawalRepository.save(new Withdrawal(UUID.randomUUID(), cardId, money));
     }
+
+    @Transactional
+    public void repay(UUID cardId, BigDecimal money){
+        CreditCard creditCard = creditCardRepository.load(cardId);
+        creditCard.repay(money);
+        withdrawalRepository.save(new Withdrawal(UUID.randomUUID(), cardId, money));
+    }
 }

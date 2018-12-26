@@ -27,13 +27,13 @@ public class CreditcardApplication {
 		SpringApplication.run(CreditcardApplication.class, args);
 	}
 
-//	@Scheduled(fixedRate = 2000)
-//	public void randomCard() {
-//		CreditCard creditCard = new CreditCard(UUID.randomUUID());
-//		creditCard.assignLimit(BigDecimal.TEN);
-//		creditCard.withdraw(BigDecimal.TEN);
-//		creditCardRepository.save(creditCard);
-//	}
+	@Scheduled(fixedRate = 2000)
+	public void randomCard() {
+		CreditCard creditCard = new CreditCard(UUID.randomUUID());
+		creditCard.assignLimit(BigDecimal.TEN);
+		creditCard.withdraw(BigDecimal.TEN);
+		creditCardRepository.save(creditCard);
+	}
 
 }
 

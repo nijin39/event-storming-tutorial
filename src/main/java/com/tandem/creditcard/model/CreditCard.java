@@ -1,11 +1,8 @@
 package com.tandem.creditcard.model;
 
-import com.fasterxml.jackson.annotation.JsonRawValue;
 import io.vavr.Predicates;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -64,11 +61,11 @@ public class CreditCard {
         return this;
     }
 
-    void repay(BigDecimal money) {
-        this.handleWithAppend(new CardRepaid(uuid, money, Instant.now()));
+    public void repay(BigDecimal money) {
+        this.handleWithAppend(new MoneyRepaid(uuid, money, Instant.now()));
     }
 
-    private CreditCard cardRepaid(CardRepaid event) {
+    private CreditCard cardRepaid(MoneyRepaid event) {
         usedLimit = usedLimit.subtract(event.getMoney());
         return this;
     }
@@ -110,7 +107,7 @@ public class CreditCard {
         return io.vavr.API.Match(event).of(
                 Case($(Predicates.instanceOf(LimitAssigned.class)), this::limitAssigned),
                 Case($(Predicates.instanceOf(CardWithdrawn.class)), this::cardWithdrawn),
-                Case($(Predicates.instanceOf(CardRepaid.class)), this::cardRepaid)
+                Case($(Predicates.instanceOf(MoneyRepaid.class)), this::cardRepaid)
                 //Case($(Predicates.instanceOf(CycleClosed.class)), this::cycleClosed)
         );
     }

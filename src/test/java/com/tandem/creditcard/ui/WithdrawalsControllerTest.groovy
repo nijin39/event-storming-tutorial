@@ -48,7 +48,10 @@ class WithdrawalsControllerTest {
 
         // then
         ResponseEntity<List<Withdrawal>> withdrawals =
-                testRestTemplate.exchange("/withdrawals/{uuid}", HttpMethod.GET, null, new ParameterizedTypeReference<List<Withdrawal>>() {}, ["uuid": ANY_CARD_NO])
+                testRestTemplate.exchange("/withdrawals/{uuid}",
+                        HttpMethod.GET, null,
+                        new ParameterizedTypeReference<List<Withdrawal>>() {},
+                        ["uuid": ANY_CARD_NO]);
         assertThat(withdrawals.getStatusCode().is2xxSuccessful(), is(true));
         assertThat(withdrawals.getBody(), hasSize(1))
     }

@@ -7,12 +7,12 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Getter
-public class CardRepaid implements DomainEvent {
+public class MoneyRepaid implements DomainEvent {
     private final UUID uuid;
     private final BigDecimal money;
     private final Instant timestamp;
 
-    public CardRepaid(UUID uuid, BigDecimal money, Instant timestamp) {
+    public MoneyRepaid(UUID uuid, BigDecimal money, Instant timestamp) {
         this.uuid = uuid;
         this.money = money;
         this.timestamp = timestamp;
