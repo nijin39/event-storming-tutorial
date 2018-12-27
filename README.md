@@ -219,3 +219,6 @@ That knowledge is a very important architectural driver that can make us decide 
 ### Deploy
 
 ### Build Value
+
+### REF
+https://dzone.com/articles/spring-cloud-stream-with-kafka
