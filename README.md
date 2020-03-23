@@ -50,7 +50,7 @@ https://www.youtube.com/watch?v=k8sGf6ZPs2E
 
 When it comes to understanding the business that you're building software for, there is no programming framework that can magically help us understand and model a complex domain. I don't expect such a tool to ever materialize, since it is generally impossible to predict how such a domain will evolve and change in the future. There are, however, some common abstract business domains that most should be familiar with—like *sales*, *inventory,* or a *product catalogue*. When it comes to domain modeling from scratch, there's no need to reinvent the wheel. Here is a great resource I recommend for complex domain modeling: [Enterprise Patterns and MDA: Building Better Software with Archetype Patterns and UML](https://www.amazon.com/Enterprise-Patterns-MDA-Building-Archetype/dp/032111230X).
 
-소프트웨어를 구축하려는 비즈니스를 이해하는 때 복잡한 도메인을 이해하고 모델링 하는 것에 대하여 마술처럼 도움을 주는 프로그래밍 프레임 워크는 없습니다. 나는 도메인이 미래에 어떻게 발전하고 변화할 것인지 예측하는 것이 불가능 하기 때문에 이런 프로그래밍 프레임이 나올 것이라고 기대하지 않습니다.  그러나 몇몇 공통적으로 판매,재고, 제품 카탈로그와 같이 익숙해져야 하는 일반적으로 추상화 되어 있는 비즈니스 도메인이 있습니다. 터음부터 도메인 모델링을 할 때 바퀴를 다시 발명할 필요는 없습니다. 복잡한 도메인 모델링을 위해 권장하는 훌륭한 참고자료는 아래와 같습니다.
+소프트웨어를 구축하려는 비즈니스를 이해하는 때 복잡한 도메인을 이해하고 모델링 하는 것에 대하여 마술처럼 도움을 주는 프로그래밍 프레임 워크는 없습니다. 나는 도메인이 미래에 어떻게 발전하고 변화할 것인지 예측하는 것이 불가능 하기 때문에 이런 프로그래밍 프레임이 나올 것이라고 기대하지 않습니다.  그러나 몇몇 공통적으로 판매,재고, 제품 카탈로그와 같이 익숙해져야 하는 일반적으로 추상화 되어 있는 비즈니스 도메인이 있습니다. 처음부터 도메인 모델링을 할 때 바퀴를 다시 발명할 필요는 없습니다. 복잡한 도메인 모델링을 위해 권장하는 훌륭한 참고자료는 아래와 같습니다.
 
 Enterprise Patterns and MDA: Building Better Software with Archetype Patterns and UML](https://www.amazon.com/Enterprise-Patterns-MDA-Building-Archetype/dp/032111230X).
 
@@ -72,7 +72,7 @@ Even the most complex domains can be divided into…
 
 - Simple and understandable subdomains that might not be unique to our enterprise (so-called generic subdomains) - we need them for our enterprise to operate but it does not give our customers competitive advantage. Think about *inventory* or *invoicing.* Our users will not come back attracted by even the prettiest invoices.
 
-  엔터프라이즈에 고유하지 않은 간단하고 이해하기 쉬운 도메인("generic SubDomain") - 기업용 어플리케이션이 동작하게 도움을 주지만 경쟁 우위를 제공하지는 않습니다. 인벤토리 또는 인보이스에 대해 생각해보십시오. 가장 예쁜 청구서를 만들다고 하여도 고객들은 그다지 좋아하지 않을 것입니다.
+  엔터프라이즈에 고유하지 않은 간단하고 이해하기 쉬운 도메인("generic SubDomain") - 기업용 어플리케이션이 동작하게 도움을 주지만 경쟁 우위를 제공하지는 않습니다. 인벤토리 또는 인보이스에 대해 생각해보십시오. 가장 예쁜 청구서를 만든다고 하여도 고객들은 그다지 좋아하지 않을 것입니다.
 
 ![implementing domain-driven design core domainì ëí ì´ë¯¸ì§ ê²ìê²°ê³¼](https://www.oreilly.com/library/view/implementing-domain-driven-design/9780133039900/graphics/02fig02.jpg)
 
@@ -100,7 +100,7 @@ We are going to implement a simplified credit card management system. We will se
 
 ### Understand
 
-To understand what is **really** going on in our business problem we can take advantage of a lightweight technique called [Event Storming](https://en.wikipedia.org/wiki/Event_storming). All we need is unlimited space on a wide wall, sticky notes and both business and technical people gathered in one room. The first step is to write down **what can happen** in our domain on orange notes. These are the **domain events.**Note the past tense and no particular order.
+To understand what is **really** going on in our business problem we can take advantage of a lightweight technique called [Event Storming](https://en.wikipedia.org/wiki/Event_storming). All we need is unlimited space on a wide wall, sticky notes and both business and technical people gathered in one room. The first step is to write down **what can happen** in our domain on orange notes. These are the **domain events.** Note the past tense and no particular order.
 
 우리 비즈니스에서 무슨 일이 일어나고 있는지를 이해하고 살펴보기 위해서 우리는 이벤트스톰이라고 불리는 가벼운 기술을 사용할 수 있습니다. 우리에게 필요한 것은 넓은 벽, 포스트잇, 그리고 비즈니스와 엔지니어팀을 가둘수 있는 넓은 방이 필요합니다. 첫 번째 단계는 우리의 도메인에서 일어날 수 있는 일을 오렌지색 노트에 적는 것입니다. 이것이 도메인 이벤트 입니다. 여기에는 과거시제도 없고 특별한 순서도 없습니다.
 
@@ -108,7 +108,7 @@ To understand what is **really** going on in our business problem we can take ad
 
 > 도메인 전문가가 관심을 가지고 있는 어떤 사건이 발생했다.
 >
-> 연속된 개별 이벤트를 묶어서 도메인에서 일어나는 활동의 정보를 모델링하자. 각 이벤트를 도메인 객체로 표현하자... 도메인 이벤트는 도메일 모델을 완벽히 지원하며 도메인에서 일어난 어떤 사건을 나타낸다. [Evans, Ref 20]
+> 연속된 개별 이벤트를 묶어서 도메인에서 일어나는 활동의 정보를 모델링하자. 각 이벤트를 도메인 객체로 표현하자... 도메인 이벤트는 도메인 모델을 완벽히 지원하며 도메인에서 일어난 어떤 사건을 나타낸다. [Evans, Ref 20]
 >
 > - "~~할 때"
 > - "그런 일이 일어나면..."
@@ -140,7 +140,7 @@ There is also a green note: *plastic card personalization view*. It is a direct 
 
 Next step is crucial. We need to know if the cause alone is sufficient for the domain event to occur. Maybe there is another condition that have to be met. Maybe more than one. Those conditions are called **invariants.** If so, we write them down on yellow notes and place in between events and causes.
 
-다음 단계는 매우 중요합니다. 우리는 원인만으로 도메인 이벤트가 발생하는지 충분한지를 알 필요가 있습니다. 아마도 충족시켜야할 다른 조건이 있을 것입니다. 아마도 한계 혹은 여러개의 원인이 있을 수 있습니다. 이러한 조건들은 invariants라고 말합니다. 그렇다면 우리는 그 원인을 적고 노란색 노트로 표시한된 원인과 이벤트 사이에 붙여 놓습니다.
+다음 단계는 매우 중요합니다. 우리는 원인만으로 도메인 이벤트가 발생하는지 충분한지를 알 필요가 있습니다. 아마도 충족시켜야할 다른 조건이 있을 것입니다. 아마도 한계 혹은 여러개의 원인이 있을 수 있습니다. 이러한 조건들은 invariants라고 말합니다. 그렇다면 우리는 그 원인을 적고 노란색 노트로 표시된 원인과 이벤트 사이에 붙여 놓습니다.
 
 ![invariants](https://github.com/pilloPl/eventstorming-with-spring/blob/master/invariants.png?raw=true)
 
@@ -180,7 +180,7 @@ Let's search for the following pattern:
 
 Doing so might segment our domain into very cohesive spots. Below we can find a proposed modularization. Remember that this is just a heuristic, you might end up with different setup. Proposed technique gives us a good chance to identify modules which are loosely coupled. This method is just a heuristic (not a strong rule) that can help us at finding independent modules. Also, if you think about it, proposed modules have linguistic boundaries. Credit card means something different for accounting and marketing, even though it’s the same word. In DDD terminology those are called *Bounded Contexts*. Those will be our deployment units. Also, this generalization must take into account if the effect should be immediate or eventual. If it can be eventually consistent, this heuristic is not that strong, even though there is a relationship.
 
-이렇게 한다면 도메인을 매우 응집력 있게 설계할 수 있습니다. 이렇게 아래와 같이 모듈들을 나누어 볼수 있습니다. 이것은 단지 경험적 일 뿐이라는 것을 기억하십시오. 다른 설정으로 끝날 수도 있습니다. 이렇게 위해서 부터 나온 기술들로 인하여 우리는 결합도가 악햔 모듈들을 설계할 수 있습니다.이 같은 방법은 Heuristic(not a strong rule)하고 독립된 모듈들을 찾아내는데 도움을 줍니다. 또한 이것에 대해서 생각해보면 제안된 모듈들은 언어적인 경계를 갖지고 있습니다. 신용카드는 회계, 마케팅에서 같은 다어지지만 다른 의미로 사용이 됩니다. DDD에서는 Bounded Context라고 합니다. 이것은 우리에게 배포의 단위가 될 수 있습니다. 또한 이 일반화는 효과가 즉각적이거나 궁극적이어야하는지 고려헤야 합니다. 결과적으로 관계가 있음에도 불구하고 이 경험적 방법은 그렇게 강력하지 않을 수도 있습니다.
+이렇게 한다면 도메인을 매우 응집력 있게 설계할 수 있습니다. 이렇게 아래와 같이 모듈들을 나누어 볼수 있습니다. 이것은 단지 경험적 일 뿐이라는 것을 기억하십시오. 다른 설정으로 끝날 수도 있습니다. 이렇게 위해서 부터 나온 기술들로 인하여 우리는 결합도가 악햔 모듈들을 설계할 수 있습니다.이 같은 방법은 Heuristic(not a strong rule)하고 독립된 모듈들을 찾아내는데 도움을 줍니다. 또한 이것에 대해서 생각해보면 제안된 모듈들은 언어적인 경계를 갖지고 있습니다. 신용카드는 회계, 마케팅에서 같은 단어이지만 다른 의미로 사용이 됩니다. DDD에서는 Bounded Context라고 합니다. 이것은 우리에게 배포의 단위가 될 수 있습니다. 또한 이 일반화는 효과가 즉각적이거나 궁극적이어야하는지 고려헤야 합니다. 결과적으로 관계가 있음에도 불구하고 이 경험적 방법은 그렇게 강력하지 않을 수도 있습니다.
 
 ![modules](https://i.imgur.com/YJBU0WO.png)
 
